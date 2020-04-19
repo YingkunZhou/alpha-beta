@@ -1,6 +1,6 @@
 # alpha-beta
 
-[](https://aws.amazon.com/serverless/)
-[](https://azure.microsoft.com/en-us/overview/serverless-computing/)
-[](https://cloud.google.com/serverless)
-[](https://www.cloudflare.com/learning/serverless/what-is-serverless/)
+[amazon](https://aws.amazon.com/serverless/)
+[microsoft](https://azure.microsoft.com/en-us/overview/serverless-computing/)
+[google](https://cloud.google.com/serverless)
+[cloudflare](https://www.cloudflare.com/learning/serverless/what-is-serverless/)
