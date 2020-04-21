@@ -1,9 +1,4 @@
 # alpha-beta
-- 查找和学习文献（论文、白皮书、技术文档、用户手册）
-  - 学习上述系统平台：系统结构、工作原理、编程界面等
-  - 近期在系统领域的会议上Serverless Computing成为了一个研究热点
-  - 阅读近期研究论文：不少于3篇
-- 形成调研报告
 
 Serverless computing is a cloud computing execution model in which the cloud provider runs the server, and dynamically manages the allocation of machine resources. Pricing is based on the actual amount of resources consumed by an application, rather than on pre-purchased units of capacity.[1](https://techcrunch.com/2015/11/24/aws-lamda-makes-serverless-applications-a-reality/) It can be a form of utility computing. 
 
