@@ -77,6 +77,43 @@ Serverless computing is covered by International Data Center Authority (IDCA) in
 
 Serverless computing is provided as a third-party service. Applications and software that run in the serverless environment are by default locked to a specific cloud vendor.[17] Therefore, serverless can cause multiple issues during migration.[18] 
 
+### a overview
+![](figs/1.png)
+![](figs/2.png)
+![](figs/3.png)
+![](figs/4.png)
+![](figs/5.png)
+![](figs/6.png)
+![](figs/7.png)
+![](figs/8.png)
+![](figs/9.png)
+![](figs/10.png)
+![](figs/11.png)
+![](figs/12.png)
+![](figs/13.png)
+![](figs/14.png)
+![](figs/15.png)
+![](figs/16.png)
+![](figs/17.png)
+![](figs/18.png)
+![](figs/19.png)
+![](figs/20.png)
+![](figs/21.png)
+![](figs/22.png)
+![](figs/23.png)
+![](figs/24.png)
+![](figs/25.png)
+![](figs/26.png)
+![](figs/27.png)
+![](figs/28.png)
+![](figs/29.png)
+![](figs/30.png)
+![](figs/31.png)
+![](figs/32.png)
+![](figs/33.png)
+![](figs/34.png)
+![](figs/35.png)
+
 ## amazon
 
 [amazon](https://aws.amazon.com/serverless/)
