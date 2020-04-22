@@ -75,7 +75,7 @@ Serverless computing is covered by International Data Center Authority (IDCA) in
 
 #### Vendor lock-in
 
-Serverless computing is provided as a third-party service. Applications and software that run in the serverless environment are by default locked to a specific cloud vendor.[17] Therefore, serverless can cause multiple issues during migration.[18] 
+Serverless computing is provided as a third-party service. Applications and software that run in the serverless environment are by default locked to a specific cloud vendor.[17] Therefore, serverless can cause multiple issues during migration.[18](https://squadex.com/insights/what-is-serverless/) 
 
 ### a overview
 ![alt text](figs/1.png)
