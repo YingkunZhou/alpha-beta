@@ -20,3 +20,5 @@ Google Cloud Next 2018 大会上宣布 knative 的视频 presentation：https://
 Knative 产品介绍：https://cloud.google.com/knative/
 
 Knative入门——构建基于 Kubernetes 的现代化Serverless应用：https://www.servicemesher.com/getting-started-with-knative/
+
+What is Knative：https://www.youtube.com/watch?v=69OfdJ5BIzs
