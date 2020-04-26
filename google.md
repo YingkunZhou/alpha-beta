@@ -6,8 +6,8 @@
 # App Engine 
 高可扩展的serverless web应用
 
-# Cloud Run 
-无状态的 serverless HTTP 容器，口号是 Bringing Serverless to Containers。基于开源的Knative项目。
+# Cloud Run (Knative)
+Knative extends Kubernetes to provide a set of middleware components that are essential to build modern, source-centric, and container-based applications that can run anywhere: on premises, in the cloud, or even in a third-party data center.
 
 Knative相关资料：
 
