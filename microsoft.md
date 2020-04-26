@@ -140,5 +140,8 @@ Data Lake Analytics includes U-SQL, a query language that extends the familiar, 
 ### Integrates seamlessly with your IT investments
 Data Lake Analytics uses your existing IT investments for identity, management, and security. This approach simplifies data governance and makes it easy to extend your current data applications. Data Lake Analytics is integrated with Active Directory for user management and permissions and comes with built-in monitoring and auditing.
 
+### Affordable and cost effective
+Data Lake Analytics is a cost-effective solution for running big data workloads. You pay on a per-job basis when data is processed. No hardware, licenses, or service-specific support agreements are required. The system automatically scales up or down as the job starts and completes, so you never pay for more than what you need. 
+
 ### Works with all your Azure data
 Data Lake Analytics works with Azure Data Lake Storage for the highest performance, throughput, and parallelization and works with Azure Storage blobs, Azure SQL Database, Azure Warehouse.
