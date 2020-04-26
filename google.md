@@ -6,7 +6,10 @@ Google Cloud Functions is a serverless execution environment for building and co
 ## Events and Triggers
 Cloud events are things that happen in your cloud environment. These might be things like changes to data in a database, files added to a storage system, or a new virtual machine instance being created.
 
-Events occur whether or not you choose to respond to them. You create a response to an event with a trigger. A trigger is a declaration that you are interested in a certain event or set of events. Binding a function to a trigger allows you to capture and act on events. 
+Events occur whether or not you choose to respond to them. You create a response to an event with a trigger. A trigger is a declaration that you are interested in a certain event or set of events. Binding a function to a trigger allows you to capture and act on events.
+
+## Event-dirven
+Event-driven means cloud functions are executed when cloud events occur. Functions come in two flavors, the HTTP functions and backgroud function. HTTP functions are triggered by HTTP requests and can be used for things like webhooks and creating APIs. The background functions are triggered when certain cloud events occur. For example, when a file is uploaded to Cloud storage, a function could automatically run to process that upload.
 
 # App Engine 
 高可扩展的serverless web应用
