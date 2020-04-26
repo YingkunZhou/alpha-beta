@@ -14,6 +14,14 @@ Events occur whether or not you choose to respond to them. You create a response
 # Cloud Run (Knative)
 Knative extends Kubernetes to provide a set of middleware components that are essential to build modern, source-centric, and container-based applications that can run anywhere: on premises, in the cloud, or even in a third-party data center.
 
+Knavive has three key categories: Build, Serving and Events.
+
+## Build
+
+## Serving
+
+## Events
+
 Knative相关资料：
 
 Google 宣布 Knative 发布的博客：https://cloudplatform.googleblog.com/2018/07/bringing-the-best-of-serverless-to-you.html
