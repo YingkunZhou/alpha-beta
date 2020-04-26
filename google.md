@@ -19,6 +19,9 @@ Knative extends Kubernetes to provide a set of middleware components that are es
 
 Knavive has three key categories: Build, Serving and Events.
 
+## kubernetes
+Kubernetes is an open source system for managing containerized applications across multiple hosts. It provides basic mechanisms for deployment, maintenance, and scaling of applications.
+
 ## Build
 
 ## Serving
