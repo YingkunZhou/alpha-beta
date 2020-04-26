@@ -1,4 +1,3 @@
-刘力玮
 # Microsoft
 [What is serverless computing?](https://azure.microsoft.com/en-us/overview/serverless-computing/)
 ## Benefits of serverless computing
@@ -129,17 +128,17 @@ TODO
 
 Azure Data Lake Analytics is an on-demand analytics job service that simplifies big data. Instead of deploying, configuring, and tuning hardware, you write queries to transform your data and extract valuable insights. The analytics service can handle jobs of any scale instantly by setting the dial for how much power you need. You only pay for your job when it is running, making it cost-effective.
 
-# Dynamic scaling
+### Dynamic scaling
 Data Lake Analytics dynamically provisions resources and lets you do analytics on terabytes to petabytes of data. You pay only for the processing power used. As you increase or decrease the size of data stored or the amount of compute resources used, you don’t have to rewrite code.
 
-# Develop faster, debug, and optimize smarter using familiar tools
+### Develop faster, debug, and optimize smarter using familiar tools
 Data Lake Analytics deep integrates with Visual Studio. You can use familiar tools to run, debug, and tune your code. Visualizations of your U-SQL jobs let you see how your code runs at scale, so you can easily identify performance bottlenecks and optimize costs.
 
-# U-SQL: simple and familiar, powerful, and extensible
+### U-SQL: simple and familiar, powerful, and extensible
 Data Lake Analytics includes U-SQL, a query language that extends the familiar, simple, declarative nature of SQL with the expressive power of C#. The U-SQL language uses the same distributed runtime that powers Microsoft's internal exabyte-scale data lake. SQL and .NET developers can now process and analyze their data with the skills they already have.
 
-# Integrates seamlessly with your IT investments
+### Integrates seamlessly with your IT investments
 Data Lake Analytics uses your existing IT investments for identity, management, and security. This approach simplifies data governance and makes it easy to extend your current data applications. Data Lake Analytics is integrated with Active Directory for user management and permissions and comes with built-in monitoring and auditing.
 
-# Works with all your Azure data
+### Works with all your Azure data
 Data Lake Analytics works with Azure Data Lake Storage for the highest performance, throughput, and parallelization and works with Azure Storage blobs, Azure SQL Database, Azure Warehouse.
