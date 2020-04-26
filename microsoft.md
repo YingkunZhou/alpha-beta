@@ -1,6 +1,6 @@
-胡登杭 刘力玮
+刘力玮
 # Microsoft
-
+[What is serverless computing?](https://azure.microsoft.com/en-us/overview/serverless-computing/)
 ## Benefits of serverless computing
 
 ### Increase developer velocity
@@ -105,27 +105,18 @@ Functions is a great solution for processing bulk data, integrating systems, wor
 
 ### Serverless Kubernetes
 
-TODO
-
-Developers bring their own containers to fully managed, Kubernetes-orchestrated clusters that can automatically scale up and down with sudden changes in traffic on spiky workloads.
+Elastically provision pods inside container instances that start in seconds without the need to manage additional compute resources. Create serverless, Kubernetes-based applications using the orchestration capabilities of [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/) and [AKS virtual nodes](https://azure.microsoft.com/en-us/blog/bringing-serverless-to-azure-kubernetes-service/), which are built on the open-source Virtual Kubelet project. Get the best of an event-driven approach by adding KEDA event-driven autoscaling to your AKS cluster. [KEDA](https://github.com/kedacore/keda) is an open-source component that enables containers to process events directly from event sources, and it provides the ability to scale to zero.
+[一个使用AKS的例子](https://yq.aliyun.com/articles/727132)
 
 ### Serverless workflows
 
-TODO
-
-Serverless workflows take a low-code/no-code approach to simplify orchestration of combined tasks. Developers can integrate different services (either cloud or on-premises) without coding those interactions, having to maintain glue code, or learning new APIs or specifications.
+Integrate data and apps instead of writing complex glue code between disparate systems. Visually create serverless workflows with [Azure Logic Apps](https://azure.microsoft.com/en-us/services/logic-apps/) and use your own APIs, serverless functions, or out-of-the-box software as a service (SaaS) connectors, including Salesforce, Microsoft Office 365, and Dropbox.
 
 ### Serverless application environments
-
-TODO
-
 With a serverless application environment, both the back end and front end are hosted on fully managed services that handle scaling, security, and compliance requirements.
 
 ### Serverless API gateway
-
-TODO
-
-A serverless API gateway is a centralized, fully managed entry point for serverless backend services. It enables developers to publish, manage, secure, and analyze APIs at global scale.
+Publish, secure, transform, maintain, and monitor APIs with [Azure API Management](https://azure.microsoft.com/en-us/services/api-management/), a fully managed service that offers a usage model designed and implemented to be an organic fit for serverless applications.
 
 ## Serverless solution architectures
 
