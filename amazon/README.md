@@ -10,7 +10,69 @@ AWS 可提供一系列完全托管的服务，您可以使用它们构建和运�
 
 AWS provides a set of fully managed services that you can use to build and run serverless applications. Serverless applications don’t require provisioning, maintaining, and administering servers for backend components such as compute, databases, storage, stream processing, message queueing, and more. You also no longer need to worry about ensuring application fault tolerance and availability. Instead, AWS handles all of these capabilities for you. This allows you to focus on product innovation while enjoying faster time-to-market.
 
+## how aws lambda works
+
+Lambda Architecture
+-----
+One of the primary systems in the Lambda architecture is called a worker. It's where AWS provisions a secure environment and enables the customer code execution.
+
+Mesrobian explained that what the worker does is create and manage a collection of sandboxes and set limits on those boxes, such as memory and CPU available for function execution.
+
+The worker downloads the customer code, announces it for execution, and also manages multiple language runtimes. The worker additionally executes the customer code through initialization and invocation, and finally it manages agents for monitoring and operational controls like AWS CloudWatch.
+
+In order to help promote more isolation and security, AWS created the open-source Firecracker project, which provides a lightweight hypervisor isolation layer around Lambda functions.
+
+At the top of the logical view of a worker host is customer code, which is what Lambda runs for its customers. Mesrobian commented that Lambda supports a number of languages and different runtimes including node, Python, Java, C# and more. Underneath the runtime is a sandbox that hosts the runtime, and underneath that is a guest operating system running Amazon Linux.
+
+Underneath the guest operating system is a hypervisor and host operating system that the hypervisor runs in. And finally, AWS has the physical system hardware on which it all runs.
+
+Underneath the guest operating system is a hypervisor and host operating system that the hypervisor runs in. And finally, AWS has the physical system hardware on which it all runs.
+
+"So we have many accounts, each with their own micro VM running a single function," Mesrobian said. "With this architecture, we're able to run as many functions as we can provision on a worker and these functions can be from a single or multiple accounts."
+
+AWS Lambda is optimized on the AWS infrastructure for maximum utilization. Mesrobian said Lambda gathers a variety of workloads to drive higher utilization rates.
+
+"The most efficient placement strategy is to pick the workloads that pack well together and minimize contention," she said. "So it's all about putting the workloads where we can get optimum hardware utilization."
+
 ## useful url
+
+https://www.quora.com/How-does-AWS-Lambda-internally-deploy-the-code-onto-the-servers-that-execute-it#
+
+Questions: `how aws lambda works internally`
+
+https://www.serverless.com/aws-lambda/
+
+https://searchapparchitecture.techtarget.com/feature/Experts-explain-how-AWS-Lambda-works-internally
+
+This strategy uses AWS Lambda to run microservices, and uses API Gateway's custom domain configuration to properly map and direct those microservices across the connected systems. AWS also provides tools that help with load balancing and CI/CD pipeline reliability.
+
+![](figs/itops-cicd_pipeline_desktop.png)
+
+This example CI/CD pipeline covers code development and delivery and a sampling of tests that help ensure releases are production-ready. 
+
+https://searchaws.techtarget.com/blog/AWS-Cloud-Cover/AWS-month-in-review-An-AWS-reInvent-recap-of-overlooked-roll-outs
+
+Serverless
+-----
+Provisioned Concurrency for AWS Lambda
+
+This is a feature that keeps Lambda functions warm, meaning ready to execute. As serverless grows in popularity, AWS has looked to improve Lambda performance. Provisioned Concurrency will cut function cold starts, and costs \$0.015 per GB-hour for the amount of concurrency you provision and \$0.035 per GB-hour for the time your code is executed.
+
+EKS on Fargate
+
+AWS adds another option to deploy Kubernetes on AWS with this capability — albeit after a lengthy delay. ==First announced at re:Invent 2017==, Amazon Elastic Kubernetes Service (EKS) can now run Kubernetes pods on ==AWS Fargate==, Amazon’s serverless compute engine for containers. This is all handled in the EKS console rather than provisioning Kubernetes clusters on EC2.
+
+Fargate Spot
+
+This is AWS’ serverless version of ==EC2 Spot== Instances. Fargate Spot offers spare compute capacity at a discounted rate for Amazon Elastic Container Service tasks. These tasks can be interrupted when AWS needs that capacity back, so don’t use this option for mission-critical tasks.
+
+|hacker inside|
+----
+|https://hackernoon.com/lambda-internals-exploring-aws-lambda-462f05f74076#931f|
+|https://epsagon.com/blog/lambda-internals-part-two/|
+|https://github.com/epsagon/lambda-internals|
+
+https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
 
 https://aws.amazon.com/serverless/
 
@@ -33,6 +95,28 @@ https://medium.com/zappos-engineering/lambda-architecture-in-aws-79c5fc06ca4a
 https://aws.amazon.com/blogs/architecture/understanding-the-different-ways-to-invoke-lambda-functions/
 
 https://aws.amazon.com/blogs/architecture/top-10-architecture-blog-posts-of-2019/
+
+https://www.zhihu.com/question/29490143
+
+作者：Ye Huang
+链接：https://www.zhihu.com/question/29490143/answer/257670332
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+这是对AWS无服务器构架的一个实践：
+- 数据库 - DynamoDB
+- 文件存储 - S3 // 前端 Web 资源存储：Amazon S3
+- 身份验证 - Amazon IAM、Amazon Cognito
+- 核心计算 - Lambda（包括数据库CRUD，文件池CRUD，GIS地理服务等）（编程模型 node.js、java、python）
+- 服务发布 - API Gateway // 前后端 REST
+- 域名管理 - Route 53
+- 网站托管 - 代码包储存在S3，用CloudFront加速和保护（CDN, HTTPS, HTTP/2等），SSL来自Certificate Manager。
+ 
+总结了一些使用感受如下：
+- 无服务器构架很适合某些用户界面驱动（UI-driven）或者事件驱动（Event-driven或Message-driven）的应用。至于哪些以及如何决策，我觉得专门写一篇文章讨论都没问题。不过如果你要开发类似应用，无服务器构架是一个选项。上面demo就是本身需求与构架特色非常契合的例子。
+- 在FaaS（Function as a Service）以前，无服务器构架已经存在很久了，那些第三方BaaS（Backend as a Service），比如Auth0、Firebase就是基于Serverless, 只是FaaS提供了一个方式让你可以更深入的操控后端代码。并且每个FaaS服务会被单独部署在一个无状态容器中（容器间没有关联，服务间没有依赖）被事件激活，一旦结束，当前实例就会关闭。adrian cockcroft 有一个很形象的描述：如果你的PaaS可以在20ms内激活一个实例，并且运行半秒后关闭，就可以称为serverless。这些特性能做什么就给你很大想象空间了。前面提到它很适合事件驱动的场景，原因就是事物的天然属性，事情不会旅行，只会发生，一件事又往往触发许多别的事，之后便产生了结果，结果一旦出现，事件就成历史，无需再监控和操作。由此可以看到用FaaS处理异步事件是非常恰当的（但注意，不是所有事件都适用，比如需要庞大计算资源和长时间等待的复杂任务就不合适。目前对云端空间大数据流的处理依旧建议采用传统方式，比如Apache Spark，Apache Kafka和诸如PostGIS的空间数据库结合的方案）。
+- 和传统的容器相比，无服务器FaaS最大特色是无需维护后端构架，并且自动缩放，按需分配。举个例子，传统容器就像能装10公斤米的袋子，假设现在有52公斤米要装，你得买6个袋子，虽然浪费了8公斤的空间，也可以接受。但无服务器构架可以形容为米粒级别的袋子，52公斤有多少颗米，就给你多少袋子，几乎不浪费一点资源。这对软件开发商很有吸引，不仅精确控制资源需求，而且一旦任务完成就关闭服务，不再产生多余花销。从某种程度看，是达成用户和开发商的双赢。对于容器，目前还没有这种级别的解决办法，当然如Kubernetes提出的Horizontal Pod Autoscaling是发展趋势。关于其他优势，就不讨论了，可以去看看别人的讨论（JustServerless/awesome-serverless，anaibol/awesome-serverless）。
+- 无服务器FaaS构架的缺点和它的优点一样突出，比如（1）第三方厂商的系统无法控制，对方收费策略变更，进行无法预测的构架升级之类也不无可能（真实案例，有个大公司A在没提前通报下游公司B的情况下，直接砍掉某个企业级产品，到全面停产的前一天才通知B，导致B权衡之下在公司内部停用所有A的企业级产品，转投另一家供应商C），而且由于供应商要考量所有用户的需求，就不可能给你最大的灵活度。（2）FaaS服务与供应商深度耦合。代码如果想迁移到不同的无服务器FaaS厂商，需要大量的改动重构。（3）安全性受到威胁而且很难优化服务器，不可能像私有云那样实施全面的安全策略和优化措施。（4）目前执行的函数数量受到限制（不超过1000个），每个函数的运行时间受到限制（不高于5分钟），函数的启动会延迟（比如遇到用JVM实现的实例）。（5）虽然写单元测试很简单因为本身就是函数接口，但基于第三方平台写集成测试很难，比如难道我所有集成测试都是基于第三方服务（如数据库）？这会导致如场景无法控制，费用增高，没法在本地离线测试系统等问题。（6）由于很难调用和集成其他私有资源或服务，包括前面提到的安全性和系统优化的灵活度，导致面向企业的产品很大程度不会选择这种构架。
 
 -----------------
 ###  Serverless application use cases
@@ -117,6 +201,70 @@ Example: Extract, transform, load
 AWS Lambda lets you run code ==without provisioning or managing servers.== You pay only for the compute time you consume.
 
 With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and ==Lambda takes care of everything required to run and scale your code with high availability==. **You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.**
+
+You can use AWS Lambda to run your code in response to events, such as changes to data in an Amazon S3 bucket or an Amazon DynamoDB table; to run your code in response to HTTP requests using Amazon API Gateway; or invoke your code using API calls made using AWS SDKs. ==With these capabilities, you can use Lambda to easily build data processing triggers for AWS services like Amazon S3 and Amazon DynamoDB, process streaming data stored in Kinesis, or create your own back end that operates at AWS scale, performance, and security.==
+
+`You can also build serverless applications composed of functions that are triggered by events and automatically deploy them using CodePipeline and AWS CodeBuild.` For more information, see AWS Lambda applications.
+
+When using AWS Lambda, you are responsible only for your code. `AWS Lambda manages the compute fleet that offers a balance of memory, CPU, network, and other resources. How ???` ==This is in exchange for flexibility, which means you cannot log in to compute instances, or customize the operating system on provided runtimes.== These constraints enable AWS Lambda to perform operational and administrative activities on your behalf, `including provisioning capacity, monitoring fleet health, applying security patches, deploying your code, and monitoring and logging your Lambda functions.`
+
+If you need to manage your own compute resources, Amazon Web Services also offers other compute services to meet your needs.
+
+- `Amazon Elastic Compute Cloud (Amazon EC2) service` offers flexibility and a wide range of EC2 instance types to choose from. It gives you the option to customize operating systems, network and security settings, and the entire software stack, but you are responsible for provisioning capacity, monitoring fleet health and performance, and using Availability Zones for fault tolerance.
+
+- `Elastic Beanstalk` offers an easy-to-use service for deploying and scaling applications onto Amazon EC2 in which you retain ownership and full control over the underlying EC2 instances.
+
+Create an AWS Account. `---` As a best practice, you should also create an AWS Identity and Access Management (IAM) user with administrator permissions and use that for all work that does not require root credentials. Create a password for console access, and access keys to use command line tools. See Creating your first IAM admin user and group in the IAM User Guide for instructions. `---` You can author functions in the Lambda console—or with an IDE toolkit, command line tools, or SDKs. The Lambda console provides a code editor for noncompiled languages that lets you modify and test code quickly. The AWS CLI gives you direct access to the Lambda API for advanced configuration and automation use cases.
+
+You then verify execution results, including the logs that your Lambda function created and various `CloudWatch` metrics.
+
+Lambda creates a `Node.js function` and an execution role that grants the function permission to upload logs. ==Lambda assumes the execution role when you invoke your function==, and uses it to create credentials for the AWS SDK and to read data from event sources.
+
+AWS Lambda executes your function on your behalf. The `handler` in your Lambda function receives and then processes the sample event.
+
+### AWS Lambda concepts
+
+Function
+
+A function is a resource that you can invoke to run your code in AWS Lambda. A function has code that processes events, and a runtime that passes requests and responses between Lambda and the function code. You provide the code, and you can use the provided runtimes or create your own.
+
+Runtime
+
+Lambda runtimes allow functions in different languages to run in the same base execution environment. You configure your function to use a runtime that matches your programming language. The runtime sits in between the Lambda service and your function code, relaying invocation events, context information, and responses between the two. You can use runtimes provided by Lambda, or build your own.
+
+Event
+
+An event is a JSON formatted document that contains data for a function to process. The Lambda runtime converts the event to an object and passes it to your function code. When you invoke a function, you determine the structure and contents of the event.
+
+```
+{
+  "TemperatureK": 281,
+  "WindKmh": -3,
+  "HumidityPct": 0.55,
+  "PressureHPa": 1020
+}
+```
+```
+{
+  "Records": [
+    {
+      "Sns": {
+        "Timestamp": "2019-01-02T12:45:07.000Z",
+        "Signature": "tcc6faL2yUC6dgZdmrwh1Y4cGa/ebXEkAi6RibDsvpi+tE/1+82j...65r==",
+        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+        "Message": "Hello from SNS!",
+        ...
+```
+
+Concurrency
+
+Concurrency is the number of requests that your function is serving at any given time. When your function is invoked, Lambda provisions an instance of it to process the event. When the function code finishes running, it can handle another request. If the function is invoked again while a request is still being processed, another instance is provisioned, increasing the function's concurrency.
+
+Concurrency is subject to limits at the region level. You can also configure individual functions to limit their concurrency, or to ensure that they can reach a specific level of concurrency. 
+
+Trigger
+
+A trigger is a resource or configuration that invokes a Lambda function. ==This includes AWS services that can be configured to invoke a function, applications that you develop, and event source mappings. An event source mapping is a resource in Lambda that reads items from a stream or queue and invokes a function.==
 
 Benefits:
 - NO SERVERS TO MANAGE 
@@ -239,11 +387,21 @@ Serverless computing allows you to scale much quicker than with server-based app
 6. Serverless Identity Management, Authentication, and Authorization
 7. End-to-End Security Techniques
 8. Application Observability with Comprehensive Logging, Metrics, and Tracing
-9. Ensuring Your Application is Well-Architected Continuing your Learning as Serverless Computing Continues to Evolve
+9. Ensuring Your Application is Well-Architected 
+10. Continuing your Learning as Serverless Computing Continues to Evolve
 
 ## Specification
 
 Each AWS Lambda instance is a container created from Amazon Linux AMIs (a Linux distribution related to RHEL) with 128-3008 MB of RAM (in 64 MB increments), 512 MB of ephemeral storage (available in /tmp, the data lasts only for the duration of the instance, it gets discarded after all the tasks running in the instance complete) and a configurable execution time from 1 to 900 seconds. The instances are neither started nor controlled directly. Instead, a package containing the required tasks has to be created and uploaded (usually) to an S3 bucket and AWS is instructed (via Amazon Kinesis, DynamoDB or SQS) to run it when an event is triggered. Each such execution is run in a new environment so access to the execution context of previous and subsequent runs is not possible. This essentially makes the instances stateless, all the incoming and outgoing data needs to be stored by external means (usually via S3 or DynamoDB, inbound connections to the instances is disabled). The maximum compressed size of a Lambda package is 50 MB with the maximum uncompressed size being 250 MB. 
+
+
+## 运行机理
+
+Programming model
+
+Authoring specifics vary between runtimes, but all runtimes share a common programming model that defines the interface between your code and the runtime code. You tell the runtime which method to run by defining a handler in the function configuration, and the runtime runs that method. The runtime passes in objects to the handler that contain the invocation event and the context, such as the function name and request ID.
+
+When the handler finishes processing the first event, the runtime sends it another. The function's class stays in memory, so clients and variables that are declared outside of the handler method in initialization code can be reused. To save processing time on subsequent events, create reusable resources like AWS SDK clients during initialization. Once initialized, each instance of your function can process thousands of requests. 
 
 ----------
 ## other
