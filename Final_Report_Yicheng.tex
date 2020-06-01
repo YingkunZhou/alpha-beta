@@ -111,7 +111,7 @@ Azure通过Azure Logic Apps以低编码/无编码的方式，集成连接了各�
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[scale=0.5]{figs/AzureBindings.png}
-	\caption{Azure App Service体系结构（\cite{binding}图2）}
+	\caption{Azure Functions Binding示意图（\cite{binding}图2）}
 	\label{figs:bind}
 \end{figure}
 \subsubsection{Azure Functions安全和监控(汪钇丞)}
@@ -176,7 +176,7 @@ AKS的控制平面由Azure来负责控制，并保证是单租户使用的，而
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[scale=0.5]{figs/KEDA.PNG}
-	\caption{Kubernetes的结构图（\cite{Kubernetes}图1）}
+	\caption{KEDA的结构图（\cite{Kubernetes}图1）}
 	\label{figs:KEDA}
 \end{figure}
 Kubernetes自身通过Horizo​​ntal Pod Autoscaler定期查询内存和CPU资源的利用率等评价指标来决定伸缩的程度，最终计算得到应该创建的实例数。而Kubernetes从1.6版本开始支持添加自定义的指标，KEDA将触发对象的状态，例如Azure消息队列的长度，定义为评价指标，添加到指标服务器中提供给Horizo​​ntal Pod Autoscaler，做到启发式的Pod实例伸缩。如图\ref{figs:KEDA} 所示，KEDA 的功能实现主要依靠三个组件:

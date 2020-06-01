@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 \usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
-\usepackage{algorithm}  
-\usepackage{algorithmicx}  
+\usepackage{algorithm}
+\usepackage{algorithmicx}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
 \usepackage{ctex}
@@ -16,21 +16,21 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \lstdefinestyle{mystyle}{
-	backgroundcolor=\color{backcolour},   
+	backgroundcolor=\color{backcolour},
 	commentstyle=\color{codegreen},
 	keywordstyle=\color{magenta},
 	numberstyle=\tiny\color{codegray},
 	stringstyle=\color{codepurple},
 	basicstyle=\ttfamily\footnotesize,
-	breakatwhitespace=false,         
-	breaklines=true,                 
-	captionpos=b,                    
-	keepspaces=true,                 
-	numbers=left,                    
-	numbersep=5pt,                  
-	showspaces=false,                
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
 	showstringspaces=false,
-	showtabs=false,                  
+	showtabs=false,
 	tabsize=2
 }
 
@@ -42,8 +42,8 @@
 \def\le{\leqslant}
 \def\logN{\log{}n}
 \newcommand{\ro}[1]{\romannumeral #1}
-\renewcommand{\algorithmicrequire}{\textbf{input:}}  
-\renewcommand{\algorithmicensure}{\textbf{output:}} 
+\renewcommand{\algorithmicrequire}{\textbf{input:}}
+\renewcommand{\algorithmicensure}{\textbf{output:}}
 \newcommand{\norm}[1]{\lVert #1 \rVert}
 \title{大数据系统与大规模数据分析大作业Final Report}
 \author{汪钇丞\ 201928015029027\ \ 刘力玮 201928015059037 \\
@@ -174,10 +174,10 @@ Amazon的AWS Lambda是第一个提出Serverless服务的云平台。但这个结
 	\centering
 	\footnotesize% fontsize
 	\setlength{\tabcolsep}{4pt}% column separation
-	\renewcommand{\arraystretch}{1.2}%row space 
+	\renewcommand{\arraystretch}{1.2}%row space
 	\begin{tabular}{ll}
 		\hline
-		占比 & 用例\\%inserts table 
+		占比 & 用例\\%inserts table
 		\hline
 		32\%   & Web and API serving. 如例子\ref{figs:eg1}和\ref{figs:eg2}所示。\\
 		21\%   & Data Processing, e.g., batch ETL (database Extract, Transform, and Load). 如例子\ref{figs:eg4}和\ref{figs:eg5}所示。\\
@@ -464,7 +464,7 @@ Azure通过Azure Logic Apps以低编码/无编码的方式，集成连接了各�
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[scale=0.5]{figs/AzureBindings.png}
-	\caption{Azure App Service体系结构（\cite{binding}图2）}
+	\caption{Azure Functions Binding示意图（\cite{binding}图2）}
 	\label{figs:bind}
 \end{figure}
 \subsubsection{Azure Functions安全和监控(汪钇丞)}
@@ -529,7 +529,7 @@ AKS的控制平面由Azure来负责控制，并保证是单租户使用的，而
 \begin{figure}[!htbp]
 	\centering
 	\includegraphics[scale=0.5]{figs/KEDA.PNG}
-	\caption{Kubernetes的结构图（\cite{Kubernetes}图1）}
+	\caption{KEDA的结构图（\cite{Kubernetes}图1）}
 	\label{figs:KEDA}
 \end{figure}
 Kubernetes自身通过Horizo​​ntal Pod Autoscaler定期查询内存和CPU资源的利用率等评价指标来决定伸缩的程度，最终计算得到应该创建的实例数。而Kubernetes从1.6版本开始支持添加自定义的指标，KEDA将触发对象的状态，例如Azure消息队列的长度，定义为评价指标，添加到指标服务器中提供给Horizo​​ntal Pod Autoscaler，做到启发式的Pod实例伸缩。如图\ref{figs:KEDA} 所示，KEDA 的功能实现主要依靠三个组件:
@@ -846,7 +846,7 @@ Azure Functions是微软推出的一种无服务器计算服务，使用它可�
 \subsection{用户手册}
 下文介绍使用Visual Studio利用Azure Function开发C\#类库函数并将其发布到 Azure的技术文档。
 
-\subsubsection{必备条件} 
+\subsubsection{必备条件}
 从Visual Studio 2017开始，Azure Functions Tools包含在Visual Studio的Azure开发工作负荷中。确保在Visual Studio安装中包括Azure开发工作负荷并更新为最新版本，如图\ref{fig2}所示。
 \begin{figure}[h]	
 	\centering
@@ -855,7 +855,7 @@ Azure Functions是微软推出的一种无服务器计算服务，使用它可�
 	\label{fig2}	
 \end{figure}
 
-\subsubsection{创建Azure Functions项目} 
+\subsubsection{创建Azure Functions项目}
 Visual Studio中的Azure Functions项目模板创建一个项目，该项目可发布到Azure中的函数应用。可使用函数应用将函数分组为逻辑单元，以便更轻松地管理、部署、缩放和共享资源。
 \begin{enumerate}
 	\item 在Visual Studio菜单中，选择“文件” > “新建” > “项目” 。
@@ -872,11 +872,11 @@ Visual Studio中的Azure Functions项目模板创建一个项目，该项目可�
 \end{figure}
 此项目模板创建C\#项目，安装Microsoft.NET.Sdk.Functions NuGet包，并设置目标框架。新项目包含以下文件：
 
-host.json：用于配置 Functions 主机。在本地和Azure中运行时，都会应用这些设置。 
+host.json：用于配置 Functions 主机。在本地和Azure中运行时，都会应用这些设置。
 
 local.settings.json：维护本地运行函数时使用的设置。在Azure中运行时不使用这些设置。
 
-\subsubsection{本地设置文件} 
+\subsubsection{本地设置文件}
 local.settings.json文件存储应用设置、连接字符串和本地开发工具使用的设置。只有在本地运行项目时，才会使用 local.settings.json 文件中的设置。本地设置文件的结构如图图\ref{fig4}。
 
 \begin{figure}[h]	
@@ -886,7 +886,7 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 	\label{fig4}	
 \end{figure}
 
-\subsubsection{将函数添加到项目} 
+\subsubsection{将函数添加到项目}
 在C\#类库函数中，可以通过在代码中应用属性来定义函数使用的绑定。从提供的模板创建函数触发器时，将为你应用触发器属性。	
 \begin{enumerate}
 	\begin{figure}[h]	
@@ -907,7 +907,7 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 	\label{fig6}	
 \end{figure}
 
-\subsubsection{添加绑定} 
+\subsubsection{添加绑定}
 使用触发器时，输入和输出绑定是作为绑定属性添加到函数的。
 \begin{enumerate}
 	\item 确保已为本地开发配置项目。
@@ -922,13 +922,13 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 	\label{fig7}	
 \end{figure}
 
-\subsubsection{函数测试} 
+\subsubsection{函数测试}
 \begin{enumerate}
 	\item Azure Functions Core Tools允许在本地开发计算机上运行Azure Functions项目。
 	\item 在运行项目时，可以像测试已部署的函数一样测试代码。
 \end{enumerate}	
 
-\subsubsection{发布到Azure} 
+\subsubsection{发布到Azure}
 从 Visual Studio 发布时，使用以下两种部署方法之一。Web部署：将Windows应用打包并部署到任何IIS服务器。启用了从包运行的Zip部署：建议用于Azure Functions部署。
 
 本例中使用以下步骤将项目发布到 Azure 中的函数应用。
@@ -959,7 +959,7 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 	\label{fig10}	
 \end{figure}
 
-\subsubsection{函数应用设置} 
+\subsubsection{函数应用设置}
 必须将在local.settings.json中添加的任何设置添加到Azure函数应用中。 发布项目时，不会自动上传这些设置。
 
 将所需设置上传到Azure中的函数应用的最简单方法是使用“管理应用程序设置...”链接，如图\ref{fig11}所示。
@@ -980,7 +980,7 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 
 本地表示local.settings.json文件中的设置值，远程是Azure的函数应用中的当前设置。 选择"添加设置"以创建新的应用设置。使用“从本地插入值”链接将设置值复制到“远程”字段。 你选择“确定”后，挂起的更改将写入本地设置文件和函数应用。
 
-\subsubsection{函数监视} 
+\subsubsection{函数监视}
 监视函数执行的建议方法是将函数应用与Azure Application Insights集成。Azure Application Insights可以收集日志、性能和错误数据，自动检测性能异常，并提供强大的分析工具来帮助你诊断问题并了解函数的使用方式。
 
 在Azure门户中创建函数应用时，默认情况下会为你完成此集成。 但在Visual Studio发布期间创建函数应用时，Azure中的函数应用集成未完成。可以通过 Functions 轻松地将Application Insights集成从 Azure门户添加到某个函数应用。
@@ -1011,14 +1011,14 @@ Google Cloud Functions是用于构建和连接云端服务的一种无服务器�
 	\label{fig14}	
 \end{figure}	
 
-\subsubsection{准备工作} 
+\subsubsection{准备工作}
 \begin{enumerate}
 	\item 在Cloud Console的项目选择器页面上，选择或创建Cloud项目。
 	\item 确保Google Cloud项目已启用结算功能。
 	\item 启用Cloud Functions API。
 \end{enumerate}	
 
-\subsubsection{创建函数} 
+\subsubsection{创建函数}
 \begin{enumerate}
 	\item 在Cloud Console中打开Cloud Functions概览页面，如图\ref{fig15}所示
 	\begin{figure}[h]	
@@ -1035,8 +1035,8 @@ Google Cloud Functions是用于构建和连接云端服务的一种无服务器�
 	\item 用运行时下拉列表选择 Python 运行时。
 \end{enumerate}	
 
-\subsubsection{函数部署} 
-部署的运行方式是将包含函数源代码的归档上传到Google Cloud Storage存储分区。使用者可以从本地机器、GitHub或Bitbucket源代码库（通过Cloud Source Repositories）或直接从Cloud Functions API部署Cloud Functions函数。
+\subsubsection{函数部署}
+部署的运行方式是将包含函数源代码的归档上传到Google Cloud Storage存储分区。使用者可以从本地机器、GitHub或Bitbucket源代码库（通过Cloud Source Repositories）或直接从Cloud Functions API 部署Cloud Functions函数。
 
 本例中按照以下方式：
 \begin{enumerate}
@@ -1050,7 +1050,7 @@ Google Cloud Functions是用于构建和连接云端服务的一种无服务器�
 	\item 点击创建后，Cloud Console将重定向到Cloud Functions概览页面。
 \end{enumerate}	
 
-\subsubsection{函数测试} 
+\subsubsection{函数测试}
 \begin{enumerate}
 	\item 显示使用者的函数对应的菜单，然后点击图\ref{fig17}测试函数。
 	\begin{figure}[h]	
@@ -1071,7 +1071,7 @@ Google Cloud Functions是用于构建和连接云端服务的一种无服务器�
 	\end{figure}
 \end{enumerate}	
 
-\subsubsection{日志查看} 
+\subsubsection{日志查看}
 Google Stackdriver提供了一套监控工具。Stackdriver Logging可捕获并存储Cloud Functions函数日志，会捕获特殊格式的错误日志，并将其显示在Error Reporting信息中心中。
 
 检查日志以通过日志历史记录了解函数的操作，如图\ref{fig19}所示。
