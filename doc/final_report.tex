@@ -591,7 +591,6 @@ ADLS把存储系统抽象为Storage tiers, 每个tiers对应着一个特有的�
 ADLS把每个文件细分为了partial file, 对每个partial file又细分为了extents，每个extents由多个4KB的数据块组成：
 \begin{figure}[H]
 \includegraphics[width=\linewidth]{figs/file_store.png}
-\label{fig1}
 \end{figure}
 目的是便于维护分布式读写操作的正确性。每个file、partial file和extent都有sealed和unsealed两个状态，定义如下：
 \begin{itemize}
