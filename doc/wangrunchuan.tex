@@ -1,4 +1,4 @@
-\section{一个简单的Serverless平台原型（汪润川）}
+\section{一个简单的Serverless平台原型（汪润川）}\label{sec:implementation}
 \subsection{简述}
 为了对 Serverless 计算有一个比较直观的认识，我们调研了一个供研究和测试用的 Serverless 平台原型\cite{mcgrath2017serverless}。该平台原型由 .NET 实现，部署在 Microsoft Azure 上，以 Windows 容器为函数执行环境。其基本架构如图\ref{figs:mcgrath2017_structure}所示，包括 Web 和 Worker 两个服务，中间消息层，以及代码和元数据存储平台。消息层和存储平台依赖 Azure Storage 实现。Web 服务暴露平台的公共 REST API，接收外部的调用消息，实现前后端的交互；一个 Worker 服务管理若干容器。
 \begin{figure}[!htbp]
@@ -63,7 +63,7 @@ Web 服务首先尝试从暖队列中获取一个空闲容器，如果不成功�
 退避测试用于评价 Serverless 平台应对冷启动以及函数终止的表现。测试会按照递增的时间间隔向测试函数发送单个执行请求，时间间隔由1分钟向30分钟递增。测试结果如图\ref{figs:2017_backoff_test}。
 
 
-再作者的平台上，根据设计，如果容器被闲置15分钟，那么它将会被收回，在这之后执行函数会遇到冷启动的问题。实验结果也反映出来，在15分钟后，原型的延迟会变得很高。Azure Functions 同样有着明显的冷启动问题。OpenWhisk 在10分钟之后会有轻微的冷启动问题，但和原型以及 Azure Functions 相比并不明显。Google Cloud Functions 和 AWS Lambda 几乎没有冷启动问题，可能是因为它们的容器启动时间短，或者容器在启动前有一个预分配内存的过程。
+在作者的平台上，根据设计，如果容器被闲置15分钟，那么它将会被收回，在这之后执行函数会遇到冷启动的问题。实验结果也反映出来，在15分钟后，原型的延迟会变得很高。Azure Functions 同样有着明显的冷启动问题。OpenWhisk 在10分钟之后会有轻微的冷启动问题，但和原型以及 Azure Functions 相比并不明显。Google Cloud Functions 和 AWS Lambda 几乎没有冷启动问题，可能是因为它们的容器启动时间短，或者容器在启动前有一个预分配内存的过程。
 
 \subsection{讨论}
 该 Serverless 原型还有如下的问题和可以改进的地方：
@@ -78,7 +78,7 @@ Web 服务首先尝试从暖队列中获取一个空闲容器，如果不成功�
 
 作者的 Serverless 平台虽然比较简单，支持的功能也有限，但已经具有了一般 Serverless 平台的特点，包括函数驱动，自动部署，自动扩容缩容等。其遇到的问题，如冷启动，也是 Serverless 商用平台所需要解决的。
 
-\section{Knative与Google Cloud Run（汪润川）}
+\section{Knative与Google Cloud Run（汪润川）}\label{sec:google_cloud}
 
 \subsection{简述}
 传统的 Serverless 存在着厂商绑定、缺乏行业标准的问题，为此，Google 联合 Redhat, IBM 等公司推出了 Knative 框架，旨在提供一套简单易用的 Serverless 计算方案，把 Serverless 标准化。它以分布式容器 Kubernetes 为基础，并提供了缩容到零、自动扩缩、集群内构建以及事件框架等功能。Knative 于2018年7月推出，目前仍在快速发展阶段。Google Cloud Run 是 Knative 的完全托管版本。

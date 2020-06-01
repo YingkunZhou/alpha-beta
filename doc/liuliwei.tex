@@ -1,4 +1,4 @@
-\section{Microsoft Azure Functions（刘力玮）}
+\section{Microsoft Azure Functions（刘力玮）}\label{sec:azure_use}
 \subsection{基本原理}
 Azure Functions是微软推出的一种无服务器计算服务，使用它可以运行事件触发的代码，而无需显式预配或管理基础结构。Azure Functions允许使用者运行小段代码（称为“函数”）且不需要担心应用程序基础结构。借助Azure Functions，云基础结构可以提供应用程序保持规模化运行所需的所有最新状态的服务器。函数由特定类型的事件“触发”。支持的触发器包括对数据更改做出响应，对消息做出响应，按计划运行，或者生成HTTP请求的结果。虽然使用者始终可以直接针对大量服务编写代码，但使用绑定可以简化与其他服务的集成。使用绑定，使用者能够以声明方式访问各种Azure服务和第三方服务。
 
@@ -170,7 +170,7 @@ local.settings.json文件存储应用设置、连接字符串和本地开发工�
 	\item 选择“应用”。Application Insights资源在与函数应用相同的资源组和订阅中创建。
 \end{enumerate}	
 
-\section{Google Cloud Functions（刘力玮）}
+\section{Google Cloud Functions（刘力玮）}\label{sec:google_use}
 \subsection{基本原理}
 Google Cloud Functions是用于构建和连接云端服务的一种无服务器执行环境。借助Cloud Functions，使用者可以编写单一用途的简单函数，并将这些函数关联到云端基础架构和服务发出的事件。当所监控的事件发生时，就会触发使用者的函数。使用者的代码将在完全托管的环境中执行。使用者无需预配任何基础架构，也不必费心管理任何服务器。
 
